@@ -1,0 +1,36 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Routes table {% endblock %}</h1>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for route in routes %}
+        <div class='route'>
+        <tr>
+          <th scope="row">{{ route.id }}</th>
+          <td>{{ route.name }}</td>
+          <td>
+              {% if current_user.is_authenticated and current_user.status == 'admin' %}
+                  <a href="{{ url_for('routes.changeroutes', id=route.id) }}" class="btn btn-sm btn-secondary">Change</a>
+                  <a href="{{ url_for('routes.deleteroutes', id=route.id) }}" class="btn btn-sm btn-secondary">Delete</a>
+              {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+        </div>
+        {% if current_user.is_authenticated and current_user.status == 'admin' %}
+            <tr>
+                <a href="{{ url_for('routes.createroutes') }}" class="btn btn-sm btn-secondary">Add new route</a>
+            </tr>
+        {% endif %}
+      </tbody>
+    </table>
+{% endblock %}

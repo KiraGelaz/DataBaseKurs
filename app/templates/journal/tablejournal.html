@@ -1,0 +1,42 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Journal table {% endblock %}</h1>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Time out</th>
+          <th scope="col">Time in</th>
+          <th scope="col">Route ID</th>
+          <th scope="col">Auto ID</th>
+          <th scope="col">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for journal in journals %}
+        <div class='journal'>
+        <tr>
+          <th scope="row">{{ journal.id }}</th>
+          <td>{{ journal.time_out }}</td>
+          <td>{{ journal.time_in }}</td>
+          <td>{{ journal.route_id }}</td>
+          <td>{{ journal.auto_id }}</td>
+          <td>
+            {% if current_user.is_authenticated and current_user.status == 'admin' %}
+              <a href="{{ url_for('journal.changejournal', id=journal.id) }}" class="btn btn-sm btn-secondary">Change</a>
+              <a href="{{ url_for('journal.deletejournal', id=journal.id) }}" class="btn btn-sm btn-secondary">Delete</a>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+        </div>
+        {% if current_user.is_authenticated and current_user.status == 'admin' %}
+          <tr>
+                <a href="{{ url_for('journal.createjournal') }}" class="btn btn-sm btn-secondary">Add new record</a>
+          </tr>
+        {% endif %}
+      </tbody>
+    </table>
+{% endblock %}

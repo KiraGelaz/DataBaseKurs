@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Delete auto {% endblock %}</h1>
+    <div class='auto'>
+        <form method="post">
+            <p>
+                <h1>You want to delete auto #{{ auto.id }} {{ auto.num }} {{ auto.color }} {{ auto.mark }}</h1>
+            </p>
+            <p>
+                <button type="submit">Submit</button>
+            </p>
+        </form>
+    </div>
+{% endblock %}

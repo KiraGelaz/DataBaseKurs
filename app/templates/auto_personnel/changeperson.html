@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Change person info {% endblock %}</h1>
+    <div class='person'>
+        <form method="post" class="form-control d-flex flex-column gap-2">
+            <h1>#{{ person.id }}</h1>
+            <input name="first_name" type="text" value="{{ person.first_name }}" placeholder="{{ person.first_name }}" class="form-control">
+            <input name="last_name" type="text" value="{{ person.last_name }}" placeholder="{{ person.last_name }}" class="form-control">
+            <input name="father_name" type="text" value="{{ person.father_name }}" placeholder="{{ person.father_name }}" class="form-control">
+            <input value="Change" type="submit" class="btn btn-success">
+        </form>
+    </div>
+{% endblock %}

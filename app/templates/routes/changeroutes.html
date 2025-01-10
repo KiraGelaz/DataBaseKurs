@@ -1,0 +1,12 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Change route info {% endblock %}</h1>
+    <div class='route'>
+        <form method="post" class="form-control d-flex flex-column gap-2">
+            <h1>#{{ route.id }}</h1>
+            <input name="name" type="text" value="{{ route.name }}" placeholder="{{ route.name }}" class="form-control">
+            <input value="Change" type="submit" class="btn btn-success">
+        </form>
+    </div>
+{% endblock %}

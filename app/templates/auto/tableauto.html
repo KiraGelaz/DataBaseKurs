@@ -1,0 +1,42 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Auto table {% endblock %}</h1>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Number</th>
+          <th scope="col">Color</th>
+          <th scope="col">Mark</th>
+          <th scope="col">Owner ID</th>
+          <th scope="col">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for auto in autos %}
+        <div class='auto'>
+        <tr>
+          <th scope="row">{{ auto.id }}</th>
+          <td>{{ auto.num }}</td>
+          <td>{{ auto.color }}</td>
+          <td>{{ auto.mark }}</td>
+          <td>{{ auto.personal_id }}</td>
+          <td>
+              {% if current_user.is_authenticated and current_user.status == 'admin' %}
+                <a href="{{ url_for('auto.changeauto', id=auto.id) }}" class="btn btn-sm btn-secondary">Change</a>
+                <a href="{{ url_for('auto.deleteauto', id=auto.id) }}" class="btn btn-sm btn-secondary">Delete</a>
+              {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+        </div>
+        {% if current_user.is_authenticated and current_user.status == 'admin' %}
+          <tr>
+                <a href="{{ url_for('auto.createauto') }}" class="btn btn-sm btn-secondary">Add new auto</a>
+          </tr>
+        {% endif %}
+      </tbody>
+    </table>
+{% endblock %}

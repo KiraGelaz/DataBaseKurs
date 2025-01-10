@@ -1,0 +1,40 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Persons table {% endblock %}</h1>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">First name</th>
+          <th scope="col">Last name</th>
+          <th scope="col">Father name</th>
+          <th scope="col">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for person in persons %}
+        <div class='person'>
+        <tr>
+          <th scope="row">{{ person.id }}</th>
+          <td>{{ person.first_name }}</td>
+          <td>{{ person.last_name }}</td>
+          <td>{{ person.father_name }}</td>
+          <td>
+            {% if current_user.is_authenticated and current_user.status == 'admin' %}
+              <a href="{{ url_for('auto_personnel.changeperson', id=person.id) }}" class="btn btn-sm btn-secondary">Change</a>
+              <a href="{{ url_for('auto_personnel.deleteperson', id=person.id) }}" class="btn btn-sm btn-secondary">Delete</a>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+        </div>
+        {% if current_user.is_authenticated and current_user.status == 'admin' %}
+          <tr>
+                <a href="{{ url_for('auto_personnel.createperson') }}" class="btn btn-sm btn-secondary">Add new person</a>
+          </tr>
+        {% endif %}
+      </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Delete person {% endblock %}</h1>
+    <div class='person'>
+        <form method="post">
+            <p>
+                <h1>You want to delete person #{{ person.id }} {{ person.first_name }} {{ person.last_name }} {{ person.father_name }}</h1>
+            </p>
+            <p>
+                <button type="submit">Submit</button>
+            </p>
+        </form>
+    </div>
+{% endblock %}

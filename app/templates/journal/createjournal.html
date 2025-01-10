@@ -1,0 +1,24 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Add a New record {% endblock %}</h1>
+    <form method="post" class="form-control d-flex flex-column gap-2">
+        <input name="time_out" type="text" placeholder="Time out" class="form-control">
+        <input name="time_in" type="text" placeholder="Time in" class="form-control">
+        <select name="route_id">
+            {% for route in routes %}
+                <div class='route'>
+                    <option value="{{ route.id }}" label="{{ route.id }}"></option>
+                </div>
+            {% endfor %}
+        </select>
+        <select name="auto_id">
+            {% for auto in autos %}
+                <div class='auto'>
+                    <option value="{{ auto.id }}" label="{{ auto.id }}"></option>
+                </div>
+            {% endfor %}
+        </select>
+        <input value="Add" type="submit" class="btn btn-success">
+    </form>
+{% endblock %}

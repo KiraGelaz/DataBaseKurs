@@ -1,0 +1,9 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Add a New route {% endblock %}</h1>
+    <form method="post" class="form-control d-flex flex-column gap-2">
+        <input name="name" type="text" placeholder="Name" class="form-control">
+        <input value="Add" type="submit" class="btn btn-success">
+    </form>
+{% endblock %}

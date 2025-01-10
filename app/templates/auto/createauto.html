@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Add a New auto {% endblock %}</h1>
+    <form method="post" class="form-control d-flex flex-column gap-2">
+        <input name="num" type="text" placeholder="Number" class="form-control">
+        <input name="color" type="text" placeholder="Color" class="form-control">
+        <input name="mark" type="text" placeholder="Mark" class="form-control">
+        <select name="personal_id">
+            {% for person in persons %}
+                <div class='person'>
+                    <option value="{{ person.id }}" label="{{ person.id }}"></option>
+                </div>
+            {% endfor %}
+        </select>
+        <input value="Add" type="submit" class="btn btn-success">
+    </form>
+{% endblock %}

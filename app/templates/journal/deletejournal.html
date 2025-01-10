@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Delete record {% endblock %}</h1>
+    <div class='journal'>
+        <form method="post">
+            <p>
+                <h1>You want to delete record #{{ journal.id }}</h1>
+            </p>
+            <p>
+                <button type="submit">Submit</button>
+            </p>
+        </form>
+    </div>
+{% endblock %}

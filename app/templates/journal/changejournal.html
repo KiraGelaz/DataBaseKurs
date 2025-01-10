@@ -1,0 +1,27 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Change record info {% endblock %}</h1>
+    <div class='journal'>
+        <form method="post" class="form-control d-flex flex-column gap-2">
+            <h1>#{{ journal.id }}</h1>
+            <input name="time_out" type="text" value="{{ journal.time_out }}" placeholder="{{ journal.time_out }}" class="form-control">
+            <input name="time_in" type="text" value="{{ journal.time_in }}" placeholder="{{ journal.time_in }}" class="form-control">
+            <select name="route_id">
+                {% for route in routes %}
+                    <div class='route'>
+                        <option value="{{ route.id }}" label="{{ route.id }}"></option>
+                    </div>
+                {% endfor %}
+            </select>
+            <select name="auto_id">
+                {% for auto in autos %}
+                    <div class='auto'>
+                        <option value="{{ auto.id }}" label="{{ auto.id }}"></option>
+                    </div>
+                {% endfor %}
+            </select>
+            <input value="Change" type="submit" class="btn btn-success">
+        </form>
+    </div>
+{% endblock %}

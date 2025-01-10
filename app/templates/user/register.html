@@ -1,0 +1,30 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Registration {% endblock %}
+
+{% block content %}
+    <div class = "regist" >
+        <form method="post" class="form-control">
+            {{ form.csrf_token }}
+            <p>
+            {{ form.login(class="form-control", placeholder="Login") }}
+                {% if form.login.errors %}
+                    <div class="invalid-feedback" style="display: block!important;">
+                    {% for error in form.login.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                    </div>
+                {% endif %}
+            </p>
+            <p>
+            {{ form.password(class="form-control", placeholder="Password") }}
+            </p>
+            <p>
+            {{ form.confirm_password(class="form-control", placeholder="Confirm password") }}
+            </p>
+            <p>
+            {{ form.submit(class="btn btn-success") }}
+            </p>
+        </form>
+    </div>
+{% endblock %}

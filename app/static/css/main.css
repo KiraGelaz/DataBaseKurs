@@ -1,0 +1,39 @@
+/* HEADER */
+header {
+    font-size: 35px;
+    position: sticky;
+    top: 0;
+    padding: 25px;
+    z-index: 1000;
+    background: #fff;
+    -webkit-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+
+}
+
+.header__img {
+    height: 10%;
+    width: 10%;
+}
+
+/* BODY */
+
+.content {
+    font-size: 30px;
+    padding: 25px;
+}
+
+.btn {
+    font-size: 27px;
+}
+
+/*TABLES*/
+.btn {
+    font-size: 27px;
+}
+
+/* REGISTRATION */
+.regist {
+    position: sticky;
+    top: 20px;
+    width: 420px;

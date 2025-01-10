@@ -1,0 +1,11 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Add a New person {% endblock %}</h1>
+    <form method="post" class="form-control d-flex flex-column gap-2">
+        <input name="first_name" type="text" placeholder="First name" class="form-control">
+        <input name="last_name" type="text" placeholder="Last name" class="form-control">
+        <input name="father_name" type="text" placeholder="Father name" class="form-control">
+        <input value="Add" type="submit" class="btn btn-success">
+    </form>
+{% endblock %}

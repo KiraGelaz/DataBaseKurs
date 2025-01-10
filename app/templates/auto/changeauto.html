@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Change auto info {% endblock %}</h1>
+    <div class='auto'>
+        <form method="post" class="form-control d-flex flex-column gap-2">
+            <h1>#{{ auto.id }}</h1>
+            <input name="num" type="text" value="{{ auto.num }}" placeholder="{{ auto.num }}" class="form-control">
+            <input name="color" type="text" value="{{ auto.color }}" placeholder="{{ auto.color }}" class="form-control">
+            <input name="mark" type="text" value="{{ auto.mark }}" placeholder="{{ auto.mark }}" class="form-control">
+            <select name="personal_id">
+                {% for person in persons %}
+                    <div class='person'>
+                        <option value="{{ person.id }}" label="{{ person.id }}"></option>
+                    </div>
+                {% endfor %}
+            </select>
+            <input value="Change" type="submit" class="btn btn-success">
+        </form>
+    </div>
+{% endblock %}
